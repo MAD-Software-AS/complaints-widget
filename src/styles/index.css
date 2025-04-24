@@ -32,6 +32,7 @@ button {
     border-radius: var(--border-radius-default);
     overflow: visible;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: -webkit-fill-available;
 }
 
 .select-trigger {
@@ -41,6 +42,7 @@ button {
     background-color: inherit;
     color: inherit;
     min-width: 150px;
+    width: -webkit-fill-available;
 }
 
 .select-options {
@@ -58,6 +60,8 @@ button {
     transition: all 0.3s ease; 
     z-index: 1000;
     border-radius: var(--border-radius-default);
+    max-height: 220px;
+    overflow-y: auto;
 }
 
 .selected-option {
@@ -65,6 +69,7 @@ button {
     white-space: nowrap;
     width: 130px;
     overflow: hidden;
+    width: auto;
 }
 
 .option.selected {

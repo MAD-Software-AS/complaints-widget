@@ -34,16 +34,29 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
       </button>
       {isDropdownVisibile ? (
         <div className="select-options">
-          {items?.map(({ name, objectId }) => (
+          {items?.length ? (
+            items?.map(({ name, objectId }) => (
+              <div
+                className={`option${
+                  objectId === selectedItem ? " selected" : ""
+                }`}
+                onClick={onItemSelect(objectId)}
+              >
+                {name}
+              </div>
+            ))
+          ) : (
             <div
-              className={`option${
-                objectId === selectedItem ? " selected" : ""
-              }`}
-              onClick={onItemSelect(objectId)}
+              style={{
+                width: "fit-content",
+                marginLeft: "auto",
+                marginRight: "auto",
+                height: "40px",
+              }}
             >
-              {name}
+              Ingen data
             </div>
-          ))}
+          )}
         </div>
       ) : null}
     </div>
