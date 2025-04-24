@@ -1,6 +1,6 @@
+import { Salon, SalonEmployee } from "../../domains/Salon/Salon.model";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { Salon } from "../../domains/Salon/Salon.model";
 import getApiUrl from "../../utils/getApiUrl";
 
 export type ChainDayPrice = {
@@ -18,64 +18,61 @@ export type ChainDayPrice = {
 };
 
 export type SalonAvailability = {
-    date: string;
-    discountPercent: number;
-    discountedPrice: number;
-    normalPrice: number;
-  }
+  date: string;
+  discountPercent: number;
+  discountedPrice: number;
+  normalPrice: number;
+};
 
 type ChainSalonsState = {
   salons: Salon[];
-  chainDayPrice: ChainDayPrice | null;
-  availabilities: {
-    [key: string]: SalonAvailability[];
-  };
-  termsAndConditions: ChainTermsAndConditions | null
+  employees: Record<string,SalonEmployee[]>;
+  termsAndConditions: ChainTermsAndConditions | null;
   loading: boolean;
-  error: Error | null
+  error: Error | null;
 };
 
 export type ChainTermsAndConditions = {
-  objectId: string
+  objectId: string;
   paragraphs: {
-    id: number
-    value: string
-  }[]
-}
+    id: number;
+    value: string;
+  }[];
+};
 
 const INITIAL_STATE: ChainSalonsState = {
   salons: [],
-  chainDayPrice: null,
-  availabilities: {},
+  employees: {},
   termsAndConditions: null,
   loading: true,
-  error: null
+  error: null,
 };
 
-const useGetWidgetContextData = (chainId: string, setSelectedSalon: React.Dispatch<React.SetStateAction<string | null>>, env: string) => {
+const useGetWidgetContextData = (
+  chainId: string,
+  setSelectedSalon: React.Dispatch<React.SetStateAction<string | null>>,
+  env: string
+) => {
   const [state, setState] = useState(INITIAL_STATE);
 
   const loadSalons = useCallback(async () => {
     try {
       const reponse = await fetch(
-        `${getApiUrl(env)}/chains/availabilities/${chainId}`,
+        `${getApiUrl(env)}/chains/complaints-form-info/${chainId}`,
         {
           headers: { "Content-Type": "application/json" },
         }
       );
       const responseData = await reponse.json();
-      console.log('responseData:', responseData)
       setState({
         salons: responseData.salons,
-        chainDayPrice: responseData.chainDayPrice,
-        availabilities: responseData.availabilities,
+        employees: responseData.employees,
         termsAndConditions: responseData.termsAndConditions,
         error: null,
         loading: false,
       });
-      setSelectedSalon((responseData.salons as Salon[])?.[0]?.objectId)
     } catch (error) {
-        setState((prev) => ({...prev, loading: false, error: error as Error}))
+      setState((prev) => ({ ...prev, loading: false, error: error as Error }));
     }
   }, [chainId]);
 

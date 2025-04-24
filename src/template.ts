@@ -5,7 +5,7 @@ export function createTemplate(isSection?: boolean) {
 
     template.innerHTML = `
       <style>${styles.toString()}</style>
-      ${isSection ? '' : "<div class='mad-widget'><button id='widget-toggle-button' class='widget-toggle-button'>Online booking</button></div>"}
+      ${isSection ? '' : "<div class='mad-widget'><button id='widget-toggle-button' class='widget-toggle-button'>Alltid Fornøyd Garanti</button></div>"}
     `;
   
     return template;
