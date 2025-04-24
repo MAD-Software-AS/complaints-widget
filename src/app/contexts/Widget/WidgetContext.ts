@@ -1,6 +1,6 @@
 import { ChainDayPrice, ChainTermsAndConditions, SalonAvailability } from "./useGetWidgetContextData";
+import { Salon, SalonEmployee } from "../../domains/Salon/Salon.model";
 
-import { Salon } from "../../domains/Salon/Salon.model";
 import { createContext } from "react";
 
 interface WidgetContextValues {
@@ -29,6 +29,7 @@ interface WidgetContextValues {
     } | null>
   >;
   loading: boolean;
+  employees?: Record<string,SalonEmployee[]>
   env: string
 }
 

@@ -13,7 +13,6 @@ const App: React.FC<AppProps> = ({ chainId, env, isSection }) => {
   return (
     <WidgetProvider chainId={chainId} env={env}>
       <Widget isSection={isSection} />
-      <BookingModal />
     </WidgetProvider>
   );
 };

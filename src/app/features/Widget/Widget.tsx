@@ -1,4 +1,5 @@
 import BookingList from "../../domains/Booking/components/BookingList/BookingList";
+import ComplaintForm from "../../domains/Complaint/components/ComplaintForm/ComplaintForm";
 import Loading from "../../components/Loading";
 import React from "react";
 import SalonSelect from "../../domains/Salon/components/SalonSelect";
@@ -22,9 +23,7 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
         style={!isSection ? { padding: "0 12px" } : undefined}
         className="widget-header"
       >
-        <div>
-          <SalonSelect />
-        </div>
+
         {!isSection ? (
           <button
             id="widget-close-button"
@@ -35,13 +34,13 @@ const Widget: React.FC<{ isSection?: boolean }> = ({ isSection }) => {
           </button>
         ) : null}
       </div>
-      <div className={isSection ? "section-content" : "widget-content"}>
+      <div style={isSection ? {maxWidth: '500px', marginLeft: 'auto', marginRight: 'auto', paddingBottom: '24px'} : {}} className={isSection ? "" : "widget-content"}>
         {loading ? (
           <div style={{ display: "flex", flex: 1, justifyContent: "center" }}>
             <Loading />
           </div>
         ) : (
-          <BookingList bookings={bookings} />
+          <ComplaintForm />
         )}
       </div>
     </>

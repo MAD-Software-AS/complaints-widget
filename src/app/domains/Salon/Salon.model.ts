@@ -18,3 +18,8 @@ export type Salon = {
     }[]
     thumb: string // Thumbnail image for the salon.
 }
+
+export type SalonEmployee = {
+  name: string,
+  objectId: string
+}
