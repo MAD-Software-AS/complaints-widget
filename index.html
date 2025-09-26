@@ -4,20 +4,19 @@
     <link rel="stylesheet" href="src/styles/index.css">
     <script src="./widget.min.js"></script>
   </head>
-<body>
-
-<!-- Modal container -->
-<p id="test"></p>
-
-  <script>
-    window.onload = () => {
-
-      widget = window.MAD({
-        chainId: 'QXP0fXKmhxANYJ4WCOdG',
-        targetId: 'test',
-        env: 'dev'
-      });
-    }
-  </script>
-</body>
+  <body style="margin:0; padding: 0;">
+    <!-- Widget container -->
+    <div id="test"></div>
+    <!-- End Widget container -->
+    <script>
+      window.onload = () => {
+        widget = window.MAD({
+          chainId: 'QXP0fXKmhxANYJ4WCOdG',
+          targetId: 'test',
+          env: 'dev',
+          cssVars: {}
+        });
+      }
+    </script>
+  </body>
 </html>

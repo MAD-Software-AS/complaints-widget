@@ -1,6 +1,6 @@
-import WidgetContext from "./WidgetContext";
-import { useContext } from "react";
+import WidgetContext from './WidgetContext'
+import { useContext } from 'react'
 
-const useWidgetContext = () => useContext(WidgetContext);
+const useWidgetContext = () => useContext(WidgetContext)
 
-export default useWidgetContext;
+export default useWidgetContext

@@ -1,44 +1,44 @@
 {
-    "extends": ["react-app", "prettier", "plugin:jest/recommended"],
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["import", "react", "react-hooks", "jsx-a11y", "prettier", "jest"],
-    "settings": {
-      "react": {
-        "version": "detect"
-      },
-      "import/resolver": {
-        "node": {
-          "moduleDirectory": ["node_modules", "/"]
-        }
-      }
+  "extends": ["react-app", "prettier"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import", "react", "react-hooks", "jsx-a11y", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
     },
-    "rules": {
-      "semi": [2, "never"],
-      "no-console": ["warn", { "allow": ["warn", "error"] }],
-      "no-eval": "error",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "error",
-      "react/forbid-prop-types": 0,
-      "react/require-default-props": 0,
-      "react/jsx-filename-extension": 0,
-      "import/no-named-as-default": 0,
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": 0,
-      "react/react-in-jsx-scope": 0,
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "trailingComma": "none",
-          "semi": false,
-          "bracketSpacing": true,
-          "jsxBracketSameLine": false,
-          "printWidth": 80,
-          "tabWidth": 2,
-          "useTabs": false,
-          "endOfLine": "auto"
-        }
-      ]
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "/"]
+      }
     }
+  },
+  "rules": {
+    "semi": [2, "never"],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-eval": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "react/forbid-prop-types": 0,
+    "react/require-default-props": 0,
+    "react/jsx-filename-extension": 0,
+    "import/no-named-as-default": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": 0,
+    "react/react-in-jsx-scope": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "none",
+        "semi": false,
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "printWidth": 80,
+        "tabWidth": 2,
+        "useTabs": false,
+        "endOfLine": "auto"
+      }
+    ]
   }
+}

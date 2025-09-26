@@ -10,10 +10,19 @@
     --bg-50: rgba(0, 0, 0, 0.5);
     --bg-80: rgba(36, 28, 8, 0.8);
 
+    
+    /* Backgrounds */
+    /* --bg-default: #fff; */
+    /* --bg-accent: #fff; */
+    --bg-accent: rgba(255, 255, 255, 0.04);
+    /* --border-color: #E5E5E5; */
+    --border-color: #rgba(255, 255, 255, 0.04);
+
     /* Text colors */
     --text-color-default: white;
-    --text-color-placeholder: #776e60;
-    --text-color-80: rgba(255,255,255,0.8);
+    /* --text-color-default: #1E3148; */
+    --text-color-placeholder: #6B7280;
+    /* --text-color-80: rgba(255,255,255,0.8); */
 
     --font-size-default: 15px;
     --font-size-24: 24px;
