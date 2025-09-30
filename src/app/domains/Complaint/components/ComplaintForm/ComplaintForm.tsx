@@ -25,7 +25,8 @@ const ComplaintForm: React.FC = () => {
     isDirty: true
   })
   const [selectedEmployee, setSelectedEmployee] = useState({
-    value: '',
+    value: '', // id
+    name: '', // name
     isDirty: true
   })
   const [selectedReason, setSelectedReason] = useState({
@@ -231,7 +232,7 @@ const ComplaintForm: React.FC = () => {
           email: emailInputRef.current?.value,
           name: nameInputRef.current?.value,
           backdate: backDateComputed,
-          employee: selectedEmployee.value,
+          employee: selectedEmployee.name,
           message: commentInputRef.current?.value,
           phone: phoneInputRef.current?.value,
           salon: selectedSalon.value,
@@ -349,8 +350,8 @@ const ComplaintForm: React.FC = () => {
         <ComplaintFieldSelect
           items={employees?.[selectedSalon.value!]!}
           selectedItem={selectedEmployee.value}
-          setSelectedItem={(value) =>
-            setSelectedEmployee({ value, isDirty: true })
+          setSelectedItem={(value, name) =>
+            setSelectedEmployee({ value, name, isDirty: true })
           }
         />
         {!selectedEmployee.isDirty ? (

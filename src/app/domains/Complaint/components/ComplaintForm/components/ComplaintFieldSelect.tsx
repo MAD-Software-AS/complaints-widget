@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 interface ComplaintFieldSelectProps {
   selectedItem: string
   items: { name: string; objectId: string }[]
-  setSelectedItem: (value: string) => void
+  setSelectedItem: (value: string, name: string) => void
 }
 
 const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
@@ -21,8 +21,8 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
     <span className="text-disabled">Vennligst velg element fra listen</span>
   )
 
-  const onItemSelect = (salonId: string) => () => {
-    setSelectedItem?.(salonId)
+  const onItemSelect = (salonId: string, name: string) => () => {
+    setSelectedItem?.(salonId, name)
     setIsDropdownVisibile(false)
   }
 
@@ -40,7 +40,7 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
                 className={`option${
                   objectId === selectedItem ? ' selected' : ''
                 }`}
-                onClick={onItemSelect(objectId)}
+                onClick={onItemSelect(objectId, name)}
               >
                 {name}
               </div>
