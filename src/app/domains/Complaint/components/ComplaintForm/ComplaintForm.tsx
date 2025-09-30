@@ -216,6 +216,12 @@ const ComplaintForm: React.FC = () => {
       }))
     try {
       setIsSubmitting(true)
+      // Must be in 'dd.MM.yyyy' format
+      const backDateComputed = dateInputRef.current?.value
+        .split('-')
+        .reverse()
+        .join('.')
+
       await fetch(`${getApiUrl(env)}/chains/complaints`, {
         method: 'POST',
         headers: {
@@ -224,7 +230,7 @@ const ComplaintForm: React.FC = () => {
         body: JSON.stringify({
           email: emailInputRef.current?.value,
           name: nameInputRef.current?.value,
-          backdate: dateInputRef.current?.value,
+          backdate: backDateComputed,
           employee: selectedEmployee.value,
           message: commentInputRef.current?.value,
           phone: phoneInputRef.current?.value,
