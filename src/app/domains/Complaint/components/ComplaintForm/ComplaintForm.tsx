@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
 
 import ComplaintFieldSelect from './components/ComplaintFieldSelect'
-import Loading from '../../../../components/Loading'
 import getApiUrl from '../../../../utils/getApiUrl'
 import useWidgetContext from '../../../../contexts/Widget/useWidgetContext'
 
@@ -217,7 +216,7 @@ const ComplaintForm: React.FC = () => {
       }))
     try {
       setIsSubmitting(true)
-      await fetch(`${getApiUrl(env)}/chains/complaint`, {
+      await fetch(`${getApiUrl(env)}/chains/complaints`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -399,14 +398,10 @@ const ComplaintForm: React.FC = () => {
             }}
           >
             {isSubmitting ? (
-              <Loading
-                spinnerColor="var(--bg-default)"
-                backgroundColor="transparent"
-                containerHeight={20}
-                spinnerSize={10}
-              />
-            ) : null}
-            <div className="save-button-text">Send inn skjema</div>
+              <div className="spinner" />
+            ) : (
+              <div className="save-button-text">Send inn skjema</div>
+            )}
           </div>
         </button>
       </div>
