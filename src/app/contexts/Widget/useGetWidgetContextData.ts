@@ -48,11 +48,7 @@ const INITIAL_STATE: ChainSalonsState = {
   error: null
 }
 
-const useGetWidgetContextData = (
-  chainId: string,
-  setSelectedSalon: React.Dispatch<React.SetStateAction<string | null>>,
-  env: string
-) => {
+const useGetWidgetContextData = (chainId: string, env: string) => {
   const [state, setState] = useState(INITIAL_STATE)
 
   const loadSalons = useCallback(async () => {

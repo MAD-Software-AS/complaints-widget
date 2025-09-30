@@ -22,7 +22,7 @@ const WidgetProvider: React.FC<WidgetProviderProps> = ({
     startTime: string
     endTime: string
   } | null>(null)
-  const widgetState = useGetWidgetContextData(chainId, setSelectedSalon, env)
+  const widgetState = useGetWidgetContextData(chainId, env)
 
   return (
     <WidgetContext.Provider
