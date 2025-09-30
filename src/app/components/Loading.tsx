@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
 interface LoadingProps {
-  containerHeight?: number;
-  spinnerSize?: number;
-  backgroundColor?: string;
-  spinnerColor?: string;
+  containerHeight?: number
+  spinnerSize?: number
+  backgroundColor?: string
+  spinnerColor?: string
 }
 
 const Loading: React.FC<LoadingProps> = ({
   backgroundColor,
   containerHeight,
   spinnerColor,
-  spinnerSize,
+  spinnerSize
 }) => {
   return (
     <div
@@ -23,10 +23,10 @@ const Loading: React.FC<LoadingProps> = ({
         style={{
           color: spinnerColor,
           height: `${spinnerSize}px`,
-          width: `${spinnerSize}px`,
+          width: `${spinnerSize}px`
         }}
       />
     </div>
-  );
-};
-export default Loading;
+  )
+}
+export default Loading

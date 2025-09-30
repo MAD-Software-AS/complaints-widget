@@ -1,20 +1,18 @@
-import BookingModal from "./domains/Booking/components/BookingModal/BookingModal";
-import React from "react";
-import Widget from "./features/Widget/Widget";
-import WidgetProvider from "./contexts/Widget/WidgetProvider";
+import React from 'react'
+import Widget from './features/Widget/Widget'
+import WidgetProvider from './contexts/Widget/WidgetProvider'
 
 interface AppProps {
-  chainId: string;
+  chainId: string
   env: string
-  isSection?: boolean
 }
 
-const App: React.FC<AppProps> = ({ chainId, env, isSection }) => {
+const App: React.FC<AppProps> = ({ chainId, env }) => {
   return (
     <WidgetProvider chainId={chainId} env={env}>
-      <Widget isSection={isSection} />
+      <Widget />
     </WidgetProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
