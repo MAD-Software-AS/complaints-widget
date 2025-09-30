@@ -406,7 +406,7 @@ const ComplaintForm: React.FC = () => {
                 spinnerSize={10}
               />
             ) : null}
-            <div>Send inn skjema</div>
+            <div className="save-button-text">Send inn skjema</div>
           </div>
         </button>
       </div>

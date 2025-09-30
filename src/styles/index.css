@@ -167,6 +167,10 @@ textarea {
   min-width: 300px;
 }
 
+.save-button-text {
+  color: var(--text-color-button);
+}
+
 .input-label {
   display: block;
   color: var(--text-color-default);
