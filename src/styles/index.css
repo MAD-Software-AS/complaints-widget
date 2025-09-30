@@ -163,7 +163,8 @@ textarea {
 
 .save-button {
   background-color: var(--primary);
-  color: black;
+  color: var(--text-color-button);
+  min-width: 300px;
 }
 
 .input-label {
@@ -226,6 +227,13 @@ input::placeholder, input[type="date"]::placeholder, textarea::placeholder {
   border-radius: 50%;
   -webkit-animation: spinner .75s linear infinite;
   animation: spinner .75s linear infinite;
+}
+
+
+@media (max-width: 768px) {
+  .save-button {
+    width: 100%;
+  }
 }
 
 @keyframes spinner {

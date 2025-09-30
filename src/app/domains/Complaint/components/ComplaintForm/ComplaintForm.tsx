@@ -386,7 +386,6 @@ const ComplaintForm: React.FC = () => {
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <button
           disabled={isSubmitting}
-          style={{ minWidth: '300px' }}
           id="saveButton"
           onClick={onSubmitForm}
           className="save-button"
