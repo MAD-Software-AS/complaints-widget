@@ -19,7 +19,7 @@ const setupCSSVars = (shadowRoot: ShadowRoot, varsConfig: any) => {
     })
   }
 
-  setCSSVars(varsConfig)
+  varsConfig && setCSSVars(varsConfig)
 }
 
 export default setupCSSVars
