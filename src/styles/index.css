@@ -37,7 +37,6 @@ button {
   min-width: 150px;
   width: -webkit-fill-available;
 }
-
 .select-options {
   position: absolute;
   top: 100%;
@@ -125,8 +124,11 @@ button {
 .section {
   font-family: 'system-ui';
   min-height: 280px;
-  padding: 12px 12px 0 12px;
   background: var(--bg-default);
+}
+
+textarea {
+  resize: vertical; /* lock horizontal resize, allow vertical resize */
 }
 
 .section-content {
@@ -154,7 +156,6 @@ button {
 }
 
 .widget-content {
-  padding: 12px;
   overflow-y: auto;
   gap: 12px;
   height: calc(100% - 88px);
@@ -172,7 +173,6 @@ button {
   line-height: var(--line-height-default);
   margin-bottom: 8px;
 }
-
 .input {
   width: -webkit-fill-available;
   background-color: var(--bg-accent);
@@ -208,29 +208,29 @@ input::placeholder, input[type="date"]::placeholder, textarea::placeholder {
 }
 
 .spinner-container {
-    background-color: var(--bg-default);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  background-color: var(--bg-default);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .spinner {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    vertical-align: text-bottom;
-    color: var(--primary);
-    border: .25em solid currentColor;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: spinner .75s linear infinite;
-    animation: spinner .75s linear infinite;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  color: var(--primary);
+  border: .25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner .75s linear infinite;
+  animation: spinner .75s linear infinite;
 }
 
 @keyframes spinner {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

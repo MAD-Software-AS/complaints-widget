@@ -372,6 +372,7 @@ const ComplaintForm: React.FC = () => {
         <textarea
           ref={commentInputRef}
           onChange={onCommentInputChange}
+          rows={3}
           className={`input${
             !dateInputValidation.isDirty ? ' input-error' : ''
           }`}
@@ -382,32 +383,34 @@ const ComplaintForm: React.FC = () => {
         ) : null}
       </div>
 
-      <button
-        style={{ width: '100%' }}
-        disabled={isSubmitting}
-        id="saveButton"
-        onClick={onSubmitForm}
-        className="save-button"
-      >
-        <div
-          style={{
-            display: 'flex',
-            gap: '4px',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <button
+          disabled={isSubmitting}
+          style={{ minWidth: '300px' }}
+          id="saveButton"
+          onClick={onSubmitForm}
+          className="save-button"
         >
-          {isSubmitting ? (
-            <Loading
-              spinnerColor="var(--bg-default)"
-              backgroundColor="transparent"
-              containerHeight={20}
-              spinnerSize={10}
-            />
-          ) : null}
-          <div>Send inn skjema</div>
-        </div>
-      </button>
+          <div
+            style={{
+              display: 'flex',
+              gap: '4px',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {isSubmitting ? (
+              <Loading
+                spinnerColor="var(--bg-default)"
+                backgroundColor="transparent"
+                containerHeight={20}
+                spinnerSize={10}
+              />
+            ) : null}
+            <div>Send inn skjema</div>
+          </div>
+        </button>
+      </div>
     </>
   )
 }
