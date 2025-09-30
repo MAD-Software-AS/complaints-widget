@@ -7,15 +7,7 @@ const Widget: React.FC = () => {
   const { loading } = useWidgetContext()
 
   return (
-    <div
-      style={{
-        maxWidth: '500px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        paddingBottom: '24px'
-      }}
-      className="widget-content"
-    >
+    <div className="widget-content">
       {loading ? (
         <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
           <Loading />

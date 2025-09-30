@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import WidgetContext from "./WidgetContext";
-import useGetWidgetContextData from "./useGetWidgetContextData";
+import WidgetContext from './WidgetContext'
+import useGetWidgetContextData from './useGetWidgetContextData'
 
 interface WidgetProviderProps {
-  children: React.ReactElement | React.ReactElement[] | string;
-  chainId: string;
-  env: string;
+  children: React.ReactElement | React.ReactElement[] | string
+  chainId: string
+  env: string
 }
 
 const WidgetProvider: React.FC<WidgetProviderProps> = ({
@@ -14,15 +14,15 @@ const WidgetProvider: React.FC<WidgetProviderProps> = ({
   chainId,
   env
 }) => {
-  const [selectedSalon, setSelectedSalon] = useState<string | null>(null);
-  const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
+  const [selectedSalon, setSelectedSalon] = useState<string | null>(null)
+  const [isBookingModalOpened, setIsBookingModalOpened] = useState(false)
   const [bookingModalContext, setBookingModalContext] = useState<{
-    date: string;
-    price: number;
-    startTime: string;
-    endTime: string;
-  } | null>(null);
-  const widgetState = useGetWidgetContextData(chainId, setSelectedSalon, env);
+    date: string
+    price: number
+    startTime: string
+    endTime: string
+  } | null>(null)
+  const widgetState = useGetWidgetContextData(chainId, setSelectedSalon, env)
 
   return (
     <WidgetContext.Provider
@@ -39,7 +39,7 @@ const WidgetProvider: React.FC<WidgetProviderProps> = ({
     >
       {children}
     </WidgetContext.Provider>
-  );
-};
+  )
+}
 
-export default WidgetProvider;
+export default WidgetProvider

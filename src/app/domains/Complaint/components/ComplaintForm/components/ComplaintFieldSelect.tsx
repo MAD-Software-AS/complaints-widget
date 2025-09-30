@@ -1,30 +1,30 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 interface ComplaintFieldSelectProps {
-  selectedItem: string;
-  items: { name: string; objectId: string }[];
-  setSelectedItem: (value: string) => void;
+  selectedItem: string
+  items: { name: string; objectId: string }[]
+  setSelectedItem: (value: string) => void
 }
 
 const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
   selectedItem,
   setSelectedItem,
-  items,
+  items
 }) => {
-  const [isDropdownVisibile, setIsDropdownVisibile] = useState(false);
+  const [isDropdownVisibile, setIsDropdownVisibile] = useState(false)
 
-  const onDropdownButtonClick = () => setIsDropdownVisibile((prev) => !prev);
+  const onDropdownButtonClick = () => setIsDropdownVisibile((prev) => !prev)
 
   const currentlySelected = selectedItem ? (
     items?.find(({ objectId }) => objectId === selectedItem)?.name
   ) : (
     <span className="text-disabled">Vennligst velg element fra listen</span>
-  );
+  )
 
   const onItemSelect = (salonId: string) => () => {
-    setSelectedItem?.(salonId);
-    setIsDropdownVisibile(false);
-  };
+    setSelectedItem?.(salonId)
+    setIsDropdownVisibile(false)
+  }
 
   return (
     <div className="custom-select">
@@ -38,7 +38,7 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
             items?.map(({ name, objectId }) => (
               <div
                 className={`option${
-                  objectId === selectedItem ? " selected" : ""
+                  objectId === selectedItem ? ' selected' : ''
                 }`}
                 onClick={onItemSelect(objectId)}
               >
@@ -48,10 +48,10 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
           ) : (
             <div
               style={{
-                width: "fit-content",
-                marginLeft: "auto",
-                marginRight: "auto",
-                height: "40px",
+                width: 'fit-content',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                height: '40px'
               }}
             >
               Ingen data
@@ -60,7 +60,7 @@ const ComplaintFieldSelect: React.FC<ComplaintFieldSelectProps> = ({
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
 
-export default ComplaintFieldSelect;
+export default ComplaintFieldSelect
