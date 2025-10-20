@@ -12,7 +12,23 @@ const COMPLAINTS_REASONS = [
   { name: 'Annet', objectId: 'annet' }
 ]
 
-const ComplaintForm: React.FC = () => {
+const alertAsync = (message: string) => {
+  return new Promise<void>((resolve) => {
+    alert(message)
+    resolve()
+  })
+}
+
+const redirectionCallback = (path?: string) => {
+  if (!path) return
+  window.location.href = path
+}
+
+export interface ComplaintFormProps {
+  redirectPath?: string
+}
+
+const ComplaintForm: React.FC<ComplaintFormProps> = ({ redirectPath }) => {
   const { salons, employees, env } = useWidgetContext()
   const nameInputRef = useRef<HTMLInputElement>(null)
   const emailInputRef = useRef<HTMLInputElement>(null)
@@ -239,15 +255,14 @@ const ComplaintForm: React.FC = () => {
           type: selectedReason.value
         })
       })
-      alert('Denne saken er registrert i vårt system')
+      await alertAsync('Denne saken er registrert i vårt system')
+      redirectionCallback(redirectPath)
     } catch (error) {
       alert(
         `Det oppstod en feil under registrering av sak: ${(error as Error).message}`
       )
       // eslint-disable-next-line no-console
       console.log('Error:', error)
-    } finally {
-      setIsSubmitting(false)
     }
   }
 

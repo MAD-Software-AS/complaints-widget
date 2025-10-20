@@ -36,7 +36,11 @@ export default function createComponent(config: any) {
       const root = ReactDOM.createRoot(container)
       root.render(
         <React.StrictMode>
-          <App chainId={config.chainId} env={config.env || 'prod'} />
+          <App
+            chainId={config.chainId}
+            env={config.env || 'prod'}
+            redirectPath={config.redirectPath}
+          />
         </React.StrictMode>
       )
     }

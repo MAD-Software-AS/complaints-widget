@@ -5,12 +5,13 @@ import WidgetProvider from './contexts/Widget/WidgetProvider'
 interface AppProps {
   chainId: string
   env: string
+  redirectPath?: string
 }
 
-const App: React.FC<AppProps> = ({ chainId, env }) => {
+const App: React.FC<AppProps> = ({ chainId, env, redirectPath }) => {
   return (
     <WidgetProvider chainId={chainId} env={env}>
-      <Widget />
+      <Widget redirectPath={redirectPath} />
     </WidgetProvider>
   )
 }

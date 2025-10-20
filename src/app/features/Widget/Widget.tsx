@@ -3,7 +3,11 @@ import Loading from '../../components/Loading'
 import React from 'react'
 import useWidgetContext from '../../contexts/Widget/useWidgetContext'
 
-const Widget: React.FC = () => {
+interface WidgetProps {
+  redirectPath?: string
+}
+
+const Widget: React.FC<WidgetProps> = ({ redirectPath }) => {
   const { loading } = useWidgetContext()
 
   return (
@@ -13,7 +17,7 @@ const Widget: React.FC = () => {
           <Loading />
         </div>
       ) : (
-        <ComplaintForm />
+        <ComplaintForm redirectPath={redirectPath} />
       )}
     </div>
   )
