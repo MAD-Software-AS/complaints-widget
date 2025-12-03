@@ -7,55 +7,77 @@ import setupCSSVars from './app/utils/setupCSSVars'
 
 const WC_TAG_NAME = 'mad-widget'
 
+// Global counter to ensure uniqueness across all widget instances
+if (typeof window !== 'undefined' && !(window as any).__MAD_WIDGET_COUNTER__) {
+  ;(window as any).__MAD_WIDGET_COUNTER__ = 0
+}
+
+// Module-level WeakMap to store config for each widget instance
+const widgetConfigMap = new WeakMap<HTMLElement, any>()
+
 export default function createComponent(config: any) {
   const template = createTemplate()
 
-  class MADComplaintsSection extends HTMLElement {
-    constructor() {
-      super()
+  // Generate unique tag name for each widget instance using global counter
+  const uniqueTagName = `${WC_TAG_NAME}-${++(window as any).__MAD_WIDGET_COUNTER__}`
 
-      const targetElement = document.getElementById(config.targetId)
+  class MADComplaintsSection extends HTMLElement {
+    private reactRoot: ReactDOM.Root | null = null
+
+    connectedCallback() {
+      // This is called when the element is added to the DOM
+      const widgetConfig = widgetConfigMap.get(this)
+      if (!widgetConfig) {
+        console.error('Widget config not found')
+        return
+      }
+
+      const targetElement = document.getElementById(widgetConfig.targetId)
       if (targetElement) {
         const container = document.createElement('div')
         container.classList.add('section')
-        targetElement.appendChild(container)
-        this.renderApp(container)
+
+        const shadowDOM = this.attachShadow({ mode: 'open' })
+        // Render the template in the shadow dom
+        shadowDOM.appendChild(template.content.cloneNode(true))
+        shadowDOM.appendChild(container)
+
+        // Setup CSS vars now that shadowRoot exists
+        setupCSSVars(shadowDOM, widgetConfig?.cssVars)
+
+        const root = ReactDOM.createRoot(container)
+        this.reactRoot = root
+        root.render(
+          <React.StrictMode>
+            <App
+              chainId={widgetConfig.chainId}
+              env={widgetConfig.env || 'prod'}
+              redirectPath={widgetConfig.redirectPath}
+            />
+          </React.StrictMode>
+        )
       } else {
-        console.error(`Element with id '${config.targetId}' not found.`)
+        console.error(`Element with id '${widgetConfig.targetId}' not found.`)
       }
     }
 
-    renderApp(container: HTMLDivElement) {
-      if (!container) return
-
-      const shadowDOM = this.attachShadow({ mode: 'open' })
-      // Render the template in the shadow dom
-      shadowDOM.appendChild(template.content.cloneNode(true))
-      shadowDOM.appendChild(container)
-
-      const root = ReactDOM.createRoot(container)
-      root.render(
-        <React.StrictMode>
-          <App
-            chainId={config.chainId}
-            env={config.env || 'prod'}
-            redirectPath={config.redirectPath}
-          />
-        </React.StrictMode>
-      )
+    disconnectedCallback() {
+      // Cleanup React root when element is removed
+      if (this.reactRoot) {
+        this.reactRoot.unmount()
+        this.reactRoot = null
+      }
     }
   }
 
-  if (!customElements.get(WC_TAG_NAME)) {
-    customElements.define(WC_TAG_NAME, MADComplaintsSection)
-  }
+  // Define the custom element with unique name
+  customElements.define(uniqueTagName, MADComplaintsSection)
 
   // create an instance of the component
-  const componentInstance = document.createElement(WC_TAG_NAME, {
-    is: WC_TAG_NAME
-  })
+  const componentInstance = document.createElement(uniqueTagName)
 
-  setupCSSVars(componentInstance.shadowRoot!, config?.cssVars)
+  // Store config in WeakMap before appending (so it's available in connectedCallback)
+  widgetConfigMap.set(componentInstance, config)
 
   // mount the component instance in the body element
   const container = config?.targetId
