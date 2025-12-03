@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/index.tsx',
   mode: isProduction ? 'production' : 'development',
   output: {
-    library: 'MAD',
+    library: 'MAD_COMPLAINTS_WIDGET',
     libraryTarget: 'umd',
     libraryExport: 'default',
     path: path.resolve(__dirname, 'dist', `v${major}`),
