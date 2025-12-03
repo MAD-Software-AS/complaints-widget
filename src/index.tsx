@@ -5,7 +5,27 @@ import ReactDOM from 'react-dom/client'
 import { createTemplate } from './template'
 import setupCSSVars from './app/utils/setupCSSVars'
 
+// IMMEDIATE DEBUG: This runs as soon as the script loads
+console.log('[MAD_WIDGET_DEBUG] ========== SCRIPT LOADING ==========')
+console.log('[MAD_WIDGET_DEBUG] Module executing at:', new Date().toISOString())
+console.log(
+  '[MAD_WIDGET_DEBUG] Window available:',
+  typeof window !== 'undefined'
+)
+console.log(
+  '[MAD_WIDGET_DEBUG] Document available:',
+  typeof document !== 'undefined'
+)
+if (typeof window !== 'undefined') {
+  console.log('[MAD_WIDGET_DEBUG] window.MAD_COMPLAINTS_WIDGET will be set')
+  console.log(
+    '[MAD_WIDGET_DEBUG] Current window.MAD_COMPLAINTS_WIDGET:',
+    (window as any).MAD_COMPLAINTS_WIDGET
+  )
+}
+
 const WC_TAG_NAME = 'MAD_COMPLAINTS_WIDGET'
+console.log('[MAD_WIDGET_DEBUG] WC_TAG_NAME defined:', WC_TAG_NAME)
 
 // Global counter to ensure uniqueness across all widget instances
 if (typeof window !== 'undefined' && !(window as any).__MAD_WIDGET_COUNTER__) {
@@ -252,3 +272,14 @@ export default function createComponent(config: any) {
   console.log('[MAD_WIDGET_DEBUG] createComponent finished, returning instance')
   return componentInstance
 }
+
+// IMMEDIATE DEBUG: Verify the function is exported
+console.log('[MAD_WIDGET_DEBUG] ========== MODULE EXPORTED ==========')
+console.log(
+  '[MAD_WIDGET_DEBUG] createComponent function defined:',
+  typeof createComponent
+)
+console.log(
+  '[MAD_WIDGET_DEBUG] Export type:',
+  typeof module !== 'undefined' ? 'CommonJS' : 'ES6'
+)
