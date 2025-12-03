@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client'
 import { createTemplate } from './template'
 import setupCSSVars from './app/utils/setupCSSVars'
 
-const WC_TAG_NAME = 'mad-widget'
+const WC_TAG_NAME = 'MAD_COMPLAINTS_WIDGET'
 
 // Global counter to ensure uniqueness across all widget instances
 if (typeof window !== 'undefined' && !(window as any).__MAD_WIDGET_COUNTER__) {
