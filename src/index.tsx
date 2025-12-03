@@ -24,7 +24,7 @@ if (typeof window !== 'undefined') {
   )
 }
 
-const WC_TAG_NAME = 'MAD_COMPLAINTS_WIDGET'
+const WC_TAG_NAME = 'mad-complaints-widget'
 console.log('[MAD_WIDGET_DEBUG] WC_TAG_NAME defined:', WC_TAG_NAME)
 
 // Global counter to ensure uniqueness across all widget instances
